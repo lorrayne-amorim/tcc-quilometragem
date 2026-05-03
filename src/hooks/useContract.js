@@ -1,11 +1,8 @@
 import { useState, useCallback } from 'react'
-import { BrowserProvider, JsonRpcProvider, Contract } from 'ethers'
+import { JsonRpcProvider, Contract } from 'ethers'
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../config/contract'
 
-function getReadProvider() {
-  if (window.ethereum) return new BrowserProvider(window.ethereum)
-  return new JsonRpcProvider('https://rpc.sepolia.org')
-}
+const PUBLIC_PROVIDER = new JsonRpcProvider('https://sepolia.gateway.tenderly.co')
 
 export function useContract() {
   const [loading, setLoading] = useState(false)
@@ -15,8 +12,7 @@ export function useContract() {
     setError(null)
     setLoading(true)
     try {
-      const provider = getReadProvider()
-      const contract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider)
+      const contract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, PUBLIC_PROVIDER)
       return await contract.consultarHistorico(chassi)
     } catch (err) {
       setError(err.message)
