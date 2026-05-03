@@ -1,0 +1,205 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "entidade",
+				"type": "address"
+			}
+		],
+		"name": "EntidadeAutorizada",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "entidade",
+				"type": "address"
+			}
+		],
+		"name": "EntidadeRevogada",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "chassi",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "quilometragem",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "entidade",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "QuilometragemRegistrada",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "administrador",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_entidade",
+				"type": "address"
+			}
+		],
+		"name": "autorizarEntidade",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chassi",
+				"type": "string"
+			}
+		],
+		"name": "consultarHistorico",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "quilometragem",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "entidade",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "observacao",
+						"type": "string"
+					}
+				],
+				"internalType": "struct HistoricoQuilometragem.RegistroKm[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chassi",
+				"type": "string"
+			}
+		],
+		"name": "consultarUltimaKm",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_entidade",
+				"type": "address"
+			}
+		],
+		"name": "isAutorizada",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chassi",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_quilometragem",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_observacao",
+				"type": "string"
+			}
+		],
+		"name": "registrarQuilometragem",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_entidade",
+				"type": "address"
+			}
+		],
+		"name": "revogarEntidade",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
